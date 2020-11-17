@@ -1,51 +1,33 @@
-# QuietWeather
-一款天气应用微信小程序
-<p align='center'>
-    <img src='https://user-gold-cdn.xitu.io/2018/7/5/1646880a97f2c931?w=344&h=344&f=jpeg&s=66247'>
-</p>
+## 共享杯 天气小程序
+[比赛网址](http://share.escience.net.cn/nav/index/topic/details?topicId=45dc347b762948b89815697cda469668)
 
-## 说明
+### 题目详解
 
-I、气象数据由[百度地图开放平台]((https://lbsyun.baidu.com/))修改为了[和风天气](http://www.heweather.com/)，需要注册账号获取 `key`；免费版只能获取三天的天气数据，若要获取七天的气象数据，可以申请个人开发者认证；
+> 赛题简介
+研发基于微信端的气象科普、气象测试和主题小游戏等趣味宣传小程序。
 
-II、`d0e51c8` 版本之后为[小程序云开发](https://developers.weixin.qq.com/miniprogram/dev/wxcloud/basis/getting-started.html)版本，若未开通云开发功能，为不影响小程序正常运行，可以将版本号回退到 `git reset d0e51c8 --hard`，或，将云开发相关代码注释掉(包括：`app.js` 中的初始化、`index.js` 中获取 `message` 的代码)。若开通了云开发功能，可将相应代码部署到云上。
+> 评审标准
 
-## 截图
-<div >
-    <img src='https://raw.githubusercontent.com/myvin/miniprogram/master/quietweather/images/screenshot_1.png' style='width:300px;'>
-    <img src='https://raw.githubusercontent.com/myvin/miniprogram/master/quietweather/images/screenshot_2.png' style='width:300px;'>
-    <img src='https://raw.githubusercontent.com/myvin/miniprogram/master/quietweather/images/screenshot_3.png' style='width:300px;'>
-    <img src='https://raw.githubusercontent.com/myvin/miniprogram/master/quietweather/images/screenshot_4.png' style='width:300px;'>
+* 一、题目：作品所选题材新颖别致，具有一定的时代感和创新性。 
+* 二、语言：作品中的内容表述清晰、完整、准确，表达精准到位。文字描述结构规范严谨，符合逻辑。 
+* 三、图表：作品中的图表内容清晰，与内容形成能有效呼应。 
+* 四、其它：符合高质量科研型作品的通用标准和规范。
 
-<img src='https://raw.githubusercontent.com/myvin/miniprogram/master/quietweather/images/screenshot_5.png' style='width:300px;'>
-<img src='https://raw.githubusercontent.com/myvin/miniprogram/master/quietweather/images/screenshot_6.png' style='width:300px;'></div>
+### 内容参考
 
-## 数据来源
-~~地理编码、天气数据均来自[百度地图开放平台](https://lbsyun.baidu.com/)。个人开发完全免费，有对应的小程序 `sdk`，加入即可，但是返回的天气数据较少。~~
+微信小程序 demo
+[小程序开发文档](https://developers.weixin.qq.com/miniprogram/dev/framework/sitemap.html)
+https://cloud.tencent.com/developer/article/1036351
+https://github.com/ParryQiu/weixin_miniapp_weather
+https://github.com/liangtongdev/WxWeather
+https://juejin.im/post/6844903630714519559
 
-气象数据更换为了[和风天气](http://www.heweather.com/)，**使用的是个人开发者认证版**。
+数据来源
+https://dev.qweather.com/docs/start/icons/
 
-## 运行前准备
-> * [注册微信小程序](https://mp.weixin.qq.com/wxopen/waregister?action=step1)，获取 `appid`，配置域名白名单(在小程序后台将使用到的 `API` 添加到域名白名单)；
-> * ~~注册[百度地图开放平台](https://lbsyun.baidu.com/)开发者，创建应用 **（注意：应用类型选择微信小程序时，请填写真实的小程序 appid）** ，获取 `ak`（其他配置可自行查看）；~~
-> * 注册[和风天气](http://www.heweather.com/)账号，获取 'key`；
-> * ~~在 `app.js` 中替换 `globalData` 中的 `ak` 为自己的 `ak`；~~
-> * 在 `app.js` 中替换 `globalData` 中的 `key` 为你的 `key`；
-> * Run and Enjoy!
+### 实现目标
+基于以上例子结合赛题进行加工和改造，将相应的新的想法(结合赛题要求评判标准进行新内容的添加，对于数据的充分展现)添加的本仓库的action中。
 
-## 请喝咖啡
-如果我的项目对你有帮助，可以请我喝杯咖啡噢~
 
-### 支付宝
-
-<img src="https://raw.githubusercontent.com/myvin/miniprogram/master/9181893579988_.pic_hd.jpg" width="300" /> <img src="https://raw.githubusercontent.com/myvin/miniprogram/master/9191893579989_.pic.jpg" width="300" />
-
-### 微信
-
-<img src="https://raw.githubusercontent.com/myvin/miniprogram/master/9201893579990_.pic_hd.jpg" width="300" />
-
-## License
-
-[MIT](http://opensource.org/licenses/MIT)
-
-Copyright (c) 2018-present, myvin
+<!-- ### 实现目标
+基于以上例子结合赛题进行加工和改造，通过实现这个小程序，了解并学习小程序开发的流程以及相应的时间，目标在规定时间内完成开发，并将小程序投入到日后的使用中，进阶目标通过学习小程序的开发进而了解熟悉前端的开发，拓宽自己的技术栈. -->
