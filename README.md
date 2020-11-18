@@ -24,9 +24,14 @@ https://cloud.tencent.com/developer/article/1036351
 https://github.com/ParryQiu/weixin_miniapp_weather
 https://github.com/liangtongdev/WxWeather
 https://juejin.im/post/6844903630714519559
+[二十四节气](http://www.wxapp-union.com/thread-12440-1-1.html)
 
 数据来源
 https://dev.qweather.com/docs/start/icons/
+
+Git工作流 使用
+https://www.cnblogs.com/schaepher/p/4933873.html
+https://www.cnblogs.com/schaepher/p/4970291.html#conflict
 
 ### 实现目标
 基于以上例子结合赛题进行加工和改造，将相应的新的想法(结合赛题要求评判标准进行新内容的添加，对于数据的充分展现)添加的本仓库的action中。
