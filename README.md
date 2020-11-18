@@ -24,6 +24,7 @@ https://cloud.tencent.com/developer/article/1036351
 https://github.com/ParryQiu/weixin_miniapp_weather
 https://github.com/liangtongdev/WxWeather
 https://juejin.im/post/6844903630714519559
+[二十四节气](http://www.wxapp-union.com/thread-12440-1-1.html)
 
 数据来源
 https://dev.qweather.com/docs/start/icons/
