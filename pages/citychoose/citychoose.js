@@ -1,5 +1,8 @@
 let staticData = require('../../data/staticData.js')
 let utils = require('../../utils/utils.js')
+var hotCityData = require('../../data/hotCity.js')
+
+
 Page({
   data: {
     alternative: null,
@@ -87,18 +90,14 @@ Page({
     }
   },
   getHotCities(callback) {
-    wx.cloud.callFunction({
-      name: 'getHotCities',
-      data: {},
-    })
-    .then(res => {
-      let data = res.result.data
-      if (data) {
-        this.setData({
-          hotCities: data
-        })
-      }
-    })
+    let data = hotCityData.hotCity
+    console.log(data)
+    if (data) {
+      console.log("data")
+      this.setData({
+        hotCities:data
+      })
+    }
   },
   onLoad () {
     this.getHotCities()
