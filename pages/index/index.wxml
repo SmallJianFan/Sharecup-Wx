@@ -2,12 +2,13 @@
   <heartbeat id='heartbeat' wx:if='{{showHeartbeat}}'></heartbeat>
   <view class='bcg' wx:if='{{!bcgImg}}' style='background: {{bcgColor}}'></view>
   <image class='bcg' wx:if='{{bcgImg}}' src='{{bcgImg}}' mode='aspectFill'></image>
-  <view class='search' wx:if='{{!setting.hiddenSearch && !bcgImgAreaShow}}' style='background:rgba(255, 255, 255, 0)'>
+  <!-- 直接隐藏searchbar -->
+  <!-- <view class='search' wx:if='{{!setting.hiddenSearch && !bcgImgAreaShow}}' style='background:rgba(255, 255, 255, 0)'>
     <view class='wrapper'>
       <image src='/img/search.png'></image>
       <input placeholder-class='placeholderClass' confirm-type='search' placeholder='请输入城市名，快速查询天气信息' maxlength='20' bindconfirm='commitSearch' value='{{searchText}}' disabled='{{!enableSearch}}'></input>
     </view>
-  </view>
+  </view> -->
   <view class='chooseBcg' wx:if='{{bcgImgAreaShow}}'>
     <view class='top'>
       <view class='title'>更换背景</view>
@@ -21,7 +22,7 @@
       <image src='/img/up-arrow.png'></image>
     </view>
   </view>
-  <view class='content' wx:if='{{!bcgImgAreaShow}}' style='margin-top: {{setting.hiddenSearch ? 20 : 60}}px'>
+  <view class='content' wx:if='{{!bcgImgAreaShow}}' style='margin-top: 20px'>
     <view class='avatarInfo' catchtap='showBcgImgArea'>
       <open-data class='avatar' type='userAvatarUrl'></open-data>
       <open-data class='name' type='userNickName'></open-data>
