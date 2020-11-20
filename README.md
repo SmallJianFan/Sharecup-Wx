@@ -26,6 +26,13 @@ https://github.com/liangtongdev/WxWeather
 https://juejin.im/post/6844903630714519559
 [二十四节气](http://www.wxapp-union.com/thread-12440-1-1.html)
 
+UI 设计参考
+https://huaban.com/explore/uijiemian/
+https://www.zcool.com.cn/
+https://www.ui.cn/
+http://www.mildou.com/index.asp
+https://www.duitang.com/
+
 数据来源
 https://dev.qweather.com/docs/start/icons/
 
