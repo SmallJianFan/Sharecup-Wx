@@ -454,7 +454,7 @@ Page({
   onShareAppMessage (res) {
     let shareInfo = this.data.shareInfo
     return {
-      title: shareInfo.title || 'Quiet Weather',
+      title: shareInfo.title || '小天气',
       path: shareInfo.path || '/pages/index/index',
       imageUrl: shareInfo.imageUrl,
     }
