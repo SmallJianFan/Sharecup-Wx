@@ -202,6 +202,14 @@ page {
   text-align: right;
   font-size: 24rpx;
 }
+.sloar {
+  margin-top: -3rem;
+  margin-right: -10rem;
+  margin-bottom: 0rem;
+  font-size: 24rpx;
+  display: block;
+  text-align: right;
+}
 .message {
   font-size: 22rpx;
   color: #fff;
