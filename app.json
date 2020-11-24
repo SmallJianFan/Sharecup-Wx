@@ -5,6 +5,7 @@
     "pages/citychoose/citychoose",
     "pages/setting/setting",
     "pages/systeminfo/systeminfo",
+    "pages/solar_terms/solar/solar",
     "pages/solar_terms/chunfen/chunfen",
     "pages/solar_terms/lichun/lichun",
     "pages/solar_terms/yushui/yushui",

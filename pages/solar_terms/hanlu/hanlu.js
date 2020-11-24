@@ -1,15 +1,7 @@
 
 
-const chunfendata = require('../../utils/datas.js');
-
-// var shuju = chunfendata.jieqidata.book;
-
-// console.info(chunfendata.jieqidata()  )
+const chunfendata = require('../../../data/solarData.js');
 var jieqishuju = chunfendata.jieqidata();
-
-// console.info(jieqishuju)
-
-
 
 
 

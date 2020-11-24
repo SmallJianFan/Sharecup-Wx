@@ -77,16 +77,6 @@
 
 
 
-<view class="pic" bindtap='toindex'>
-    <text>主页</text>
-</view>
-
-
-
-
-
-
-
 
 
 
