@@ -56,8 +56,7 @@ Page({
     // 需要查询的城市
     searchCity: '',
     setting: {},
-    bcgImgList: [
-      {
+    bcgImgList: [{
         src: '/img/beach-bird-birds-235787.jpg',
         topColor: '#393836'
       },
@@ -100,8 +99,9 @@ Page({
     enableSearch: true,
     openSettingButtonShow: false,
     shareInfo: {},
+    solar_item: ''
   },
-  success (data, location) {
+  success(data, location) {
     this.setData({
       openSettingButtonShow: false,
       searchCity: location,
@@ -148,7 +148,7 @@ Page({
       })
     }
   },
-  commitSearch (res) {
+  commitSearch(res) {
     let val = ((res.detail || {}).value || '').replace(/\s+/g, '')
     this.search(val)
   },
@@ -167,12 +167,12 @@ Page({
       })
     })
   },
-  clearInput () {
+  clearInput() {
     this.setData({
       searchText: '',
     })
   },
-  search (val, callback) {
+  search(val, callback) {
     if (val === '520' || val === '521') {
       this.clearInput()
       this.dance()
@@ -193,7 +193,7 @@ Page({
   },
   // wx.openSetting 要废弃，button open-type openSetting 2.0.7 后支持
   // 使用 wx.canIUse('openSetting') 都会返回 true，这里判断版本号区分
-  canUseOpenSettingApi () {
+  canUseOpenSettingApi() {
     let systeminfo = getApp().globalData.systeminfo
     let SDKVersion = systeminfo.SDKVersion
     let version = utils.cmpVersion(SDKVersion, '2.0.7')
@@ -218,7 +218,7 @@ Page({
       }
     })
   },
-  getWeather (location) {
+  getWeather(location) {
     wx.request({
       url: `${globalData.requestUrl.weather}`,
       data: {
@@ -272,7 +272,7 @@ Page({
       },
     })
   },
-  onPullDownRefresh (res) {
+  onPullDownRefresh(res) {
     this.reloadPage()
   },
   getCityDatas() {
@@ -285,7 +285,7 @@ Page({
       },
     })
   },
-  setBcgImg (index) {
+  setBcgImg(index) {
     if (index !== undefined) {
       this.setData({
         bcgImgIndex: index,
@@ -316,35 +316,35 @@ Page({
       },
     })
   },
-  setNavigationBarColor (color) {
+  setNavigationBarColor(color) {
     let bcgColor = color || this.data.bcgColor
     wx.setNavigationBarColor({
       frontColor: '#ffffff',
       backgroundColor: this.data.bcgColor,
     })
   },
-  getBroadcast (callback) {
+  getBroadcast(callback) {
     wx.cloud.callFunction({
-      name: 'getBroadcast',
-      data: {
-        hour: new Date().getHours(),
-      },
-    })
-    .then(res => {
-      let data = res.result.data
-      if (data) {
-        callback && callback(data[0].message)
-      }
-    })
+        name: 'getBroadcast',
+        data: {
+          hour: new Date().getHours(),
+        },
+      })
+      .then(res => {
+        let data = res.result.data
+        if (data) {
+          callback && callback(data[0].message)
+        }
+      })
   },
-  reloadGetBroadcast () {
+  reloadGetBroadcast() {
     this.getBroadcast((message) => {
       this.setData({
         message,
       })
     })
   },
-  reloadWeather () {
+  reloadWeather() {
     if (this.data.located) {
       this.init({})
     } else {
@@ -355,35 +355,37 @@ Page({
     }
   },
   onShow() {
+    // 计算当前节气 
+    this.calculateSolar()
     // onShareAppMessage 要求同步返回
     if (!utils.isEmptyObject(this.data.shareInfo)) {
       return
     }
-    wx.cloud.callFunction({
-      name: 'getShareInfo',
-    })
-    .then(res => {
-      let shareInfo = res.result
-      if (shareInfo) {
-        if (!utils.isEmptyObject(shareInfo)) {
-          this.setData({
-            shareInfo,
-          })
-        }
-      }
-    })
+  //   wx.cloud.callFunction({
+  //       name: 'getShareInfo',
+  //     })
+  //     .then(res => {
+  //       let shareInfo = res.result
+  //       if (shareInfo) {
+  //         if (!utils.isEmptyObject(shareInfo)) {
+  //           this.setData({
+  //             shareInfo,
+  //           })
+  //         }
+  //       }
+  //     })
   },
-  onLoad () {
+  onLoad() {
     this.reloadPage()
   },
-  reloadPage () {
+  reloadPage() {
     this.setBcgImg()
     this.getCityDatas()
     this.reloadInitSetting()
     this.reloadWeather()
     this.reloadGetBroadcast()
   },
-  checkUpdate (setting) {
+  checkUpdate(setting) {
     // 兼容低版本
     if (!setting.forceUpdate || !wx.getUpdateManager) {
       return
@@ -404,17 +406,17 @@ Page({
       })
     })
   },
-  showBcgImgArea () {
+  showBcgImgArea() {
     this.setData({
       bcgImgAreaShow: true,
     })
   },
-  hideBcgImgArea () {
+  hideBcgImgArea() {
     this.setData({
       bcgImgAreaShow: false,
     })
   },
-  chooseBcg (e) {
+  chooseBcg(e) {
     let dataset = e.currentTarget.dataset
     let src = dataset.src
     let index = dataset.index
@@ -424,12 +426,74 @@ Page({
       data: index,
     })
   },
-  toCitychoose () {
+  toCitychoose() {
     wx.navigateTo({
       url: '/pages/citychoose/citychoose',
     })
   },
-  initSetting (successFunc) {
+  calculateSolar() {
+    var today = new Date();
+    console.log(this.solarTerm(today))
+    this.setData({
+      solar_item: this.solarTerm(today)
+    })
+  },
+  solarTerm(DateGL) {
+    var SolarTermStr = new Array(
+      "小寒", "大寒", "立春", "雨水", "惊蛰", "春分",
+      "清明", "谷雨", "立夏", "小满", "芒种", "夏至",
+      "小暑", "大暑", "立秋", "处暑", "白露", "秋分",
+      "寒露", "霜降", "立冬", "小雪", "大雪", "冬至");
+    var DifferenceInMonth = new Array(
+      1272060, 1275495, 1281180, 1289445, 1299225, 1310355,
+      1321560, 1333035, 1342770, 1350855, 1356420, 1359045,
+      1358580, 1355055, 1348695, 1340040, 1329630, 1318455,
+      1306935, 1297380, 1286865, 1277730, 1274550, 1271556);
+    var DifferenceInYear = 31556926;
+    var BeginTime = new Date(1901 / 1 / 1);
+    BeginTime.setTime(947120460000);
+    for (; DateGL.getFullYear() < BeginTime.getFullYear();) {
+      BeginTime.setTime(BeginTime.getTime() - DifferenceInYear * 1000);
+    }
+    for (; DateGL.getFullYear() > BeginTime.getFullYear();) {
+      BeginTime.setTime(BeginTime.getTime() + DifferenceInYear * 1000);
+    }
+    for (var M = 0; DateGL.getMonth() > BeginTime.getMonth(); M++) {
+      BeginTime.setTime(BeginTime.getTime() + DifferenceInMonth[M] * 1000);
+    }
+    if (DateGL.getDate() > BeginTime.getDate()) {
+      BeginTime.setTime(BeginTime.getTime() + DifferenceInMonth[M] * 1000);
+      M++;
+    }
+    if (DateGL.getDate() > BeginTime.getDate()) {
+      BeginTime.setTime(BeginTime.getTime() + DifferenceInMonth[M] * 1000);
+      M == 23 ? M = 0 : M++;
+    }
+    var JQ = "";
+    if (DateGL.getDate() == BeginTime.getDate()) {
+      JQ += " 今日 " + SolarTermStr[M];
+    } else if (DateGL.getDate() == BeginTime.getDate() - 1) {
+      JQ += "　 明日 " + SolarTermStr[M];
+    } else if (DateGL.getDate() == BeginTime.getDate() - 2) {
+      JQ += "　 后日 " + SolarTermStr[M];
+    } else {
+      JQ = "";
+      if (DateGL.getMonth() == BeginTime.getMonth()) {
+        JQ += " 本月";
+      } else {
+        JQ += " 下月";
+      }
+      JQ += BeginTime.getDate() + "日" + SolarTermStr[M];
+    }
+    return JQ;
+
+  },
+  toShowSolar() {
+    wx.navigateTo({
+      url: '/pages/solar_terms/solar/solar'
+    })
+  },
+  initSetting(successFunc) {
     wx.getStorage({
       key: 'setting',
       success: (res) => {
@@ -446,20 +510,20 @@ Page({
       },
     })
   },
-  reloadInitSetting () {
+  reloadInitSetting() {
     this.initSetting((setting) => {
       this.checkUpdate(setting)
     })
   },
-  onShareAppMessage (res) {
+  onShareAppMessage(res) {
     let shareInfo = this.data.shareInfo
     return {
-      title: shareInfo.title || 'Quiet Weather',
+      title: shareInfo.title || '小天气',
       path: shareInfo.path || '/pages/index/index',
       imageUrl: shareInfo.imageUrl,
     }
   },
-  menuHide () {
+  menuHide() {
     if (this.data.hasPopped) {
       this.takeback()
       this.setData({
@@ -467,7 +531,7 @@ Page({
       })
     }
   },
-  menuMain () {
+  menuMain() {
     if (!this.data.hasPopped) {
       this.popp()
       this.setData({
@@ -480,19 +544,19 @@ Page({
       })
     }
   },
-  menuToCitychoose () {
+  menuToCitychoose() {
     this.menuMain()
     wx.navigateTo({
       url: '/pages/citychoose/citychoose',
     })
   },
-  menuToSetting () {
+  menuToSetting() {
     this.menuMain()
     wx.navigateTo({
       url: '/pages/setting/setting',
     })
   },
-  menuToAbout () {
+  menuToAbout() {
     this.menuMain()
     wx.navigateTo({
       url: '/pages/about/about',
