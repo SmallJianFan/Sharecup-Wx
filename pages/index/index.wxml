@@ -35,7 +35,11 @@
           <view class='val'>{{cityDatas.basic.location || '定位中'}}</view>
           <image class='down' src='/img/down.png'></image>
         </view>
-        <text class='time' wx:if='{{cityDatas.updateTimeFormat}}'>{{cityDatas.updateTimeFormat}} 更新</text>
+
+        <text bindtap='toShowSolar' class='sloar' wx:if='{{solar_item}}'>{{solar_item}}</text>
+
+        <text bindtap='toShowSolar' class='time' wx:if='{{cityDatas.updateTimeFormat}}'>{{cityDatas.updateTimeFormat}} 更新</text>
+
       </view>
       <view class='message'>{{message}}</view>
       <view class='temp num' decode='true'>{{cityDatas.now.tmp || '-'}}<text style='font-size:50rpx;position:relative;top:-20px;'>℃</text></view>
@@ -135,7 +139,7 @@
         </view>
       </view>
     </view>
-    <view class='footer'>开发者 · myvin</view>
+    <view class='footer'>Copyright The dream team </view>
   </view>
   <view wx:if='{{openSettingButtonShow}}' class='openSettingButton'>
     <image src='/img/unlock.png'></image>

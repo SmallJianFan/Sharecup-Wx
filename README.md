@@ -1,6 +1,8 @@
 ## 共享杯 天气小程序
 [比赛网址](http://share.escience.net.cn/nav/index/topic/details?topicId=45dc347b762948b89815697cda469668)
 
+![设计](others/img/设计.png)
+
 ### 开发
 使用dev 分支进行开发 在todo中及时添加想法
 
@@ -39,6 +41,9 @@ https://dev.qweather.com/docs/start/icons/
 Git工作流 使用
 https://www.cnblogs.com/schaepher/p/4933873.html
 https://www.cnblogs.com/schaepher/p/4970291.html#conflict
+
+css动画 
+https://animate.style/
 
 ### 实现目标
 基于以上例子结合赛题进行加工和改造，将相应的新的想法(结合赛题要求评判标准进行新内容的添加，对于数据的充分展现)添加的本仓库的action中。
